@@ -13,7 +13,8 @@ import OpportunityIcon from "@/components/opportunity-library/OpportunityIcon";
 // =====================================================
 
 const EXPERIMENT_ROUTE = "/experiments/daily";
-const EXPERIMENT_STORAGE_KEY = "elevate_selected_experiment_strategy";
+const EXPERIMENT_STORAGE_KEY =
+  "elevate_selected_experiment_strategy";
 
 const mainStrategy = {
   id: "pb-027",
@@ -51,7 +52,7 @@ const alternatives = [
       "Menguji pesan promosi yang menonjolkan solusi atas masalah pelanggan.",
     icon: "instagram",
     whyRanked:
-      "Strategi ini menempati peringkat kedua dalam hasil pipeline Colab dengan skor 0.510, di bawah strategi Flash Sale yang memperoleh skor 0.523.",
+      "Strategi ini menjadi alternatif #2 karena masih sejalan dengan tujuan utama, yaitu membantu calon pembeli lebih yakin untuk membeli. Bedanya, strategi ini menggunakan pesan promosi yang menjelaskan manfaat produk, bukan promo dengan batas waktu. Skornya 0.510, sedikit di bawah Flash Sale (0.523), sehingga Flash Sale tetap menjadi rekomendasi utama untuk mendorong keputusan pembelian lebih cepat.",
     reasons: [
       "Pendekatan promosi berfokus pada kebutuhan dan masalah pelanggan.",
       "Memungkinkan perbandingan respons terhadap gaya promosi yang berbeda.",
@@ -79,7 +80,7 @@ const alternatives = [
       "Membangun interaksi melalui konten edukasi yang bermanfaat bagi pelanggan.",
     icon: "instagram",
     whyRanked:
-      "Strategi ini menempati peringkat ketiga dalam hasil pipeline Colab dengan skor 0.463.",
+      "Strategi ini menjadi alternatif #3 karena berfokus membangun kepercayaan dan kedekatan dengan pelanggan dalam jangka lebih panjang. Strategi ini dapat mendukung Flash Sale dan promosi fokus solusi, tetapi tidak secara langsung mendorong pembelian secepat dua strategi sebelumnya. Dalam hasil pipeline Colab, skornya 0.463, di bawah strategi #1 (0.523) dan #2 (0.510).",
     reasons: [
       "Membantu audiens mengenal manfaat produk melalui konten edukasi.",
       "Konten sederhana dapat dibuat menggunakan Canva.",
@@ -103,6 +104,7 @@ const alternatives = [
 
 // =====================================================
 // NARASI ASLI OUTPUT GEMINI DARI NOTEBOOK COLAB
+// Tidak mengubah kata-kata narasi asli.
 // =====================================================
 
 const exampleNarrative = `Halo, Kak Dinda! Apa kabarnya bisnis skincare-nya hari ini? Semoga tetap semangat ya, Kak.
@@ -147,9 +149,8 @@ function IconTile({ name, tone = "pink", size = 28 }) {
 
   return (
     <div
-      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${
-        tones[tone] || tones.pink
-      }`}
+      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${tones[tone] || tones.pink
+        }`}
     >
       <OpportunityIcon name={name} size={size} />
     </div>
@@ -159,11 +160,10 @@ function IconTile({ name, tone = "pink", size = 28 }) {
 function ReasonList({ reasons, muted = false }) {
   return (
     <div
-      className={`rounded-2xl p-5 ${
-        muted
+      className={`rounded-2xl p-5 ${muted
           ? "bg-slate-50/80"
           : "bg-gradient-to-r from-pink-50 via-white to-purple-50"
-      }`}
+        }`}
     >
       <h3 className="mb-3 text-lg font-bold text-purple-900">
         Kenapa strategi ini cocok untukmu?
@@ -213,18 +213,16 @@ function StrategyMetrics({ strategy, muted = false }) {
       {metrics.map((metric) => (
         <div
           key={metric.label}
-          className={`flex items-center gap-3 rounded-2xl p-4 ${
-            muted
+          className={`flex items-center gap-3 rounded-2xl p-4 ${muted
               ? "border border-slate-100 bg-white"
               : "bg-gradient-to-br from-pink-50 to-purple-50/70"
-          }`}
+            }`}
         >
           <div
-            className={`shrink-0 ${
-              metric.tone === "pink"
+            className={`shrink-0 ${metric.tone === "pink"
                 ? "text-pink-500"
                 : "text-purple-500"
-            }`}
+              }`}
           >
             <OpportunityIcon name={metric.icon} size={32} />
           </div>
@@ -243,37 +241,41 @@ function StrategyMetrics({ strategy, muted = false }) {
   );
 }
 
+
 function StrategyActions({ onExperiment, muted = false }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-[1.7fr_1fr]">
+    <div className={`grid gap-3 ${muted ? "" : "sm:grid-cols-[1.7fr_1fr]"}`}>
       <button
         type="button"
         onClick={onExperiment}
-        className={`flex min-h-14 items-center justify-center gap-3 rounded-2xl px-4 py-3 text-center font-semibold transition hover:shadow-md ${
-          muted
+        className={`flex min-h-14 items-center justify-center gap-3 rounded-2xl px-4 py-3 text-center font-semibold transition hover:shadow-md ${muted
             ? "border border-purple-200 bg-purple-50 text-purple-800 hover:bg-purple-100"
             : "bg-gradient-to-r from-pink-400 via-purple-400 to-violet-600 text-white"
-        }`}
+          }`}
       >
         Lihat Detail &amp; Mulai Eksperimen
         <OpportunityIcon name="arrow" size={20} />
       </button>
 
-      <Link
-        href="/financial-readiness"
-        className="flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm font-bold text-[#211B40] transition hover:bg-amber-100"
-      >
-        <span className="text-orange-500">
-          <OpportunityIcon name="calculator" size={23} />
-        </span>
-        Cek Kesiapan Keuangan
-      </Link>
+      {!muted && (
+        <Link
+          href="/financial-readiness"
+          className="flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm font-bold text-[#211B40] transition hover:bg-amber-100"
+        >
+          <span className="text-orange-500">
+            <OpportunityIcon name="calculator" size={23} />
+          </span>
+          Cek Kesiapan Keuangan
+        </Link>
+      )}
     </div>
   );
 }
 
-// Renderer ringan untuk format **tebal** dan *miring*
-// Tanpa perlu memasang library tambahan.
+// =====================================================
+// FORMAT NARASI AI
+// =====================================================
+
 function FormattedText({ text }) {
   const lines = text.split("\n");
 
@@ -283,7 +285,10 @@ function FormattedText({ text }) {
     return parts.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={index} className="font-semibold text-purple-900">
+          <strong
+            key={index}
+            className="font-semibold text-purple-900"
+          >
             {part.slice(2, -2)}
           </strong>
         );
@@ -302,23 +307,26 @@ function FormattedText({ text }) {
       {lines.map((line, index) => {
         const cleanLine = line.trim();
 
-        if (!cleanLine) {
-          return null;
-        }
+        if (!cleanLine) return null;
 
         const isBullet = cleanLine.startsWith("*   ");
 
         if (isBullet) {
           return (
             <div key={index} className="flex gap-3 pl-2">
-              <span className="shrink-0 text-pink-500">✦</span>
+              <span className="shrink-0 text-pink-500">
+                ✦
+              </span>
               <p>{renderInline(cleanLine.slice(4))}</p>
             </div>
           );
         }
 
         return (
-          <p key={index} className="whitespace-pre-wrap">
+          <p
+            key={index}
+            className="whitespace-pre-wrap"
+          >
             {renderInline(cleanLine)}
           </p>
         );
@@ -327,7 +335,17 @@ function FormattedText({ text }) {
   );
 }
 
+// =====================================================
+// PANEL NARASI AI
+// =====================================================
+
 function AiNarrativePanel({ narrative, isExample }) {
+  // Hanya menampilkan narasi asli sebelum rencana harian.
+  // Kata-kata narasi tidak diubah.
+  const introOnly = narrative
+    .split(/Yuk, kita mulai dampingi/i)[0]
+    .trim();
+
   return (
     <section className="rounded-2xl border border-purple-100 bg-gradient-to-br from-purple-50/80 via-white to-pink-50/80 p-5 sm:p-6">
       <div className="mb-4 flex items-start gap-3">
@@ -337,8 +355,9 @@ function AiNarrativePanel({ narrative, isExample }) {
 
         <div>
           <h3 className="text-lg font-bold text-purple-900">
-            Pesan untuk Perjalanan Usahamu
+            Yuk, Ketahui Dulu Kenapa Strategi Ini Cocok Untukmu!
           </h3>
+
           <p className="mt-1 text-xs leading-5 text-slate-500">
             Pendampingan dan arahan strategi untuk membantu
             usahamu bertumbuh.
@@ -347,7 +366,7 @@ function AiNarrativePanel({ narrative, isExample }) {
       </div>
 
       <div className="rounded-xl border border-purple-50 bg-white/90 p-4 sm:p-5">
-        <FormattedText text={narrative} />
+        <FormattedText text={introOnly} />
       </div>
 
       {isExample && (
@@ -361,128 +380,9 @@ function AiNarrativePanel({ narrative, isExample }) {
   );
 }
 
-function MainRecommendation({
-  onExperiment,
-  narrative,
-  isExample,
-}) {
-  return (
-    <section className="relative overflow-hidden rounded-[26px] border-2 border-purple-200 bg-white p-5 shadow-[0_12px_35px_rgba(140,95,180,0.06)] sm:p-7">
-      <div className="pointer-events-none absolute right-0 top-0 h-40 w-48 rounded-full bg-pink-100/40 blur-3xl" />
-
-      <div className="relative mb-5 flex justify-end">
-        <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-600 px-4 py-2 text-xs font-bold tracking-wide text-white shadow-sm">
-          <OpportunityIcon name="sparkle" size={17} />
-          REKOMENDASI PRIORITAS AI
-        </span>
-      </div>
-
-      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center">
-        <IconTile
-          name={mainStrategy.icon}
-          tone="pink"
-          size={42}
-        />
-
-        <div>
-          <h2 className="font-serif text-2xl font-bold leading-tight text-[#1C173C] sm:text-3xl">
-            {mainStrategy.title}
-          </h2>
-
-          <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">
-            {mainStrategy.description}
-          </p>
-        </div>
-      </div>
-
-      <div className="relative mt-6">
-        <AiNarrativePanel
-          narrative={narrative}
-          isExample={isExample}
-        />
-      </div>
-
-      <div className="relative mt-5">
-        <ReasonList reasons={mainStrategy.reasons} />
-      </div>
-
-      <div className="relative mt-5">
-        <StrategyMetrics strategy={mainStrategy} />
-      </div>
-
-      <div className="relative mt-5">
-        <StrategyActions onExperiment={onExperiment} />
-      </div>
-    </section>
-  );
-}
-
-function AlternativeStrategy({
-  strategy,
-  isOpen,
-  onToggle,
-  onExperiment,
-}) {
-  return (
-    <article className="overflow-hidden rounded-[22px] border border-purple-100 bg-white shadow-sm">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        aria-controls={`alternative-${strategy.id}`}
-        className="flex w-full items-start gap-4 p-5 text-left transition hover:bg-purple-50/30"
-      >
-        <IconTile
-          name={strategy.icon}
-          tone="pink"
-          size={27}
-        />
-
-        <div className="min-w-0 flex-1">
-          <h3 className="text-base font-bold text-[#211B40] sm:text-lg">
-            {strategy.title}
-          </h3>
-
-          <p className="mt-1 text-sm text-slate-600">
-            {strategy.description}
-          </p>
-
-          <p className="mt-3 text-xs font-semibold text-purple-700">
-            Mengapa alternatif #{strategy.rank}?
-          </p>
-
-          <p className="mt-1 text-xs leading-5 text-slate-500">
-            {strategy.whyRanked}
-          </p>
-        </div>
-
-        <span
-          className={`mt-3 shrink-0 text-purple-600 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        >
-          <OpportunityIcon name="chevron" size={24} />
-        </span>
-      </button>
-
-      {isOpen && (
-        <div
-          id={`alternative-${strategy.id}`}
-          className="space-y-4 border-t border-purple-100 bg-[#FFFCFE] px-5 pb-5 pt-5"
-        >
-          <ReasonList reasons={strategy.reasons} muted />
-
-          <StrategyMetrics strategy={strategy} muted />
-
-          <StrategyActions
-            onExperiment={() => onExperiment(strategy)}
-            muted
-          />
-        </div>
-      )}
-    </article>
-  );
-}
+// =====================================================
+// PRATINJAU RENCANA 7 HARI
+// =====================================================
 
 function SevenDayPlan({ steps, onViewDetail }) {
   const previewSteps = steps.slice(0, 3);
@@ -542,6 +442,145 @@ function SevenDayPlan({ steps, onViewDetail }) {
 }
 
 // =====================================================
+// REKOMENDASI UTAMA
+// =====================================================
+
+function MainRecommendation({
+  onExperiment,
+  narrative,
+  isExample,
+}) {
+  return (
+    <section className="relative overflow-hidden rounded-[26px] border-2 border-purple-200 bg-white p-5 shadow-[0_12px_35px_rgba(140,95,180,0.06)] sm:p-7">
+      <div className="pointer-events-none absolute right-0 top-0 h-40 w-48 rounded-full bg-pink-100/40 blur-3xl" />
+
+      <div className="relative mb-5 flex justify-end">
+        <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-600 px-4 py-2 text-xs font-bold tracking-wide text-white shadow-sm">
+          <OpportunityIcon name="sparkle" size={17} />
+          REKOMENDASI PRIORITAS AI
+        </span>
+      </div>
+
+      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center">
+        <IconTile
+          name={mainStrategy.icon}
+          tone="pink"
+          size={42}
+        />
+
+        <div>
+          <h2 className="font-serif text-2xl font-bold leading-tight text-[#1C173C] sm:text-3xl">
+            {mainStrategy.title}
+          </h2>
+
+          <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">
+            {mainStrategy.description}
+          </p>
+        </div>
+      </div>
+
+      {/* NARASI AI */}
+      <div className="relative mt-6">
+        <AiNarrativePanel
+          narrative={narrative}
+          isExample={isExample}
+        />
+      </div>
+
+      {/* RENCANA 7 HARI NAIK KE DALAM REKOMENDASI UTAMA */}
+      <div className="relative mt-5">
+        <SevenDayPlan
+          steps={mainStrategy.day_by_day_plan}
+          onViewDetail={onExperiment}
+        />
+      </div>
+
+      {/* METRIK STRATEGI */}
+      <div className="relative mt-5">
+        <StrategyMetrics strategy={mainStrategy} />
+      </div>
+
+      {/* TOMBOL AKSI */}
+      <div className="relative mt-5">
+        <StrategyActions onExperiment={onExperiment} />
+      </div>
+    </section>
+  );
+}
+
+// =====================================================
+// ALTERNATIF STRATEGI
+// =====================================================
+
+function AlternativeStrategy({
+  strategy,
+  isOpen,
+  onToggle,
+  onExperiment,
+}) {
+  return (
+    <article className="overflow-hidden rounded-[22px] border border-purple-100 bg-white shadow-sm">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`alternative-${strategy.id}`}
+        className="flex w-full items-start gap-4 p-5 text-left transition hover:bg-purple-50/30"
+      >
+        <IconTile
+          name={strategy.icon}
+          tone="pink"
+          size={27}
+        />
+
+        <div className="min-w-0 flex-1">
+          <h3 className="text-base font-bold text-[#211B40] sm:text-lg">
+            {strategy.title}
+          </h3>
+
+          <p className="mt-1 text-sm text-slate-600">
+            {strategy.description}
+          </p>
+
+          <div className="mt-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 p-4">
+            <p className="text-xs font-bold text-purple-900">
+              Kenapa ini menjadi strategi #{strategy.rank}?
+            </p>
+
+            <p className="mt-2 text-xs leading-6 text-slate-700">
+              {strategy.whyRanked}
+            </p>
+          </div>
+        </div>
+
+        <span
+          className={`mt-3 shrink-0 text-purple-600 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+            }`}
+        >
+          <OpportunityIcon name="chevron" size={24} />
+        </span>
+      </button>
+
+      {isOpen && (
+        <div
+          id={`alternative-${strategy.id}`}
+          className="space-y-4 border-t border-purple-100 bg-[#FFFCFE] px-5 pb-5 pt-5"
+        >
+          <ReasonList reasons={strategy.reasons} muted />
+
+          <StrategyMetrics strategy={strategy} muted />
+
+          <StrategyActions
+            onExperiment={() => onExperiment(strategy)}
+            muted
+          />
+        </div>
+      )}
+    </article>
+  );
+}
+
+// =====================================================
 // HALAMAN UTAMA
 // =====================================================
 
@@ -577,9 +616,9 @@ export default function OpportunityLibraryClient() {
         typeof parsed === "string"
           ? parsed
           : parsed?.narrative ??
-            parsed?.ai_narrative ??
-            parsed?.text ??
-            "";
+          parsed?.ai_narrative ??
+          parsed?.text ??
+          "";
 
       if (typeof narrative === "string") {
         setAiNarrative(narrative.trim());
@@ -623,6 +662,7 @@ export default function OpportunityLibraryClient() {
   return (
     <PageShell>
       <div className="mx-auto max-w-6xl space-y-7 text-[#211B40]">
+
         {/* HEADER */}
         <header>
           <span className="inline-flex items-center gap-2 rounded-full bg-pink-100 px-5 py-2 text-sm font-semibold text-pink-700">
@@ -654,7 +694,29 @@ export default function OpportunityLibraryClient() {
           isExample={!aiNarrative}
         />
 
-        {/* ALTERNATIF */}
+        {/* PESAN ERROR */}
+        {experimentNotice && (
+          <div
+            role="alert"
+            className="flex items-start gap-3 rounded-2xl border border-purple-200 bg-purple-50 p-5 text-sm leading-6 text-purple-900"
+          >
+            <OpportunityIcon name="info" size={22} />
+
+            <div className="flex-1">
+              {experimentNotice}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setExperimentNotice("")}
+              className="font-bold text-purple-700 underline"
+            >
+              Tutup
+            </button>
+          </div>
+        )}
+
+        {/* ALTERNATIF STRATEGI PALING BAWAH */}
         <section>
           <h2 className="mb-4 font-serif text-2xl font-bold text-pink-600">
             Alternatif Strategi Lainnya (2)
@@ -677,33 +739,6 @@ export default function OpportunityLibraryClient() {
           </div>
         </section>
 
-        {/* PRATINJAU RENCANA */}
-        <SevenDayPlan
-          steps={mainStrategy.day_by_day_plan}
-          onViewDetail={() => handleExperiment(mainStrategy)}
-        />
-
-        {/* PESAN ERROR */}
-        {experimentNotice && (
-          <div
-            role="alert"
-            className="flex items-start gap-3 rounded-2xl border border-purple-200 bg-purple-50 p-5 text-sm leading-6 text-purple-900"
-          >
-            <OpportunityIcon name="info" size={22} />
-
-            <div className="flex-1">
-              {experimentNotice}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setExperimentNotice("")}
-              className="font-bold text-purple-700 underline"
-            >
-              Tutup
-            </button>
-          </div>
-        )}
       </div>
     </PageShell>
   );
