@@ -1,7 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { Sparkles } from "lucide-react";
-import Footer from "@/components/Footer";
 
 const jakarta = localFont({
   src: [
@@ -45,7 +44,7 @@ export default function RootLayout({ children }) {
 
         <div className="flex-1">{children}</div>
 
-        <Footer />
+    
       </body>
     </html>
   );

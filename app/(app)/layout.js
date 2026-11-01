@@ -1,5 +1,5 @@
-import AppShell from "@/components/app/AppShell";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 
-export default function AppLayout({ children }) {
-  return <AppShell>{children}</AppShell>;
+export default function AppLayout({children}) {
+  return <DashboardLayout>{children}</DashboardLayout>
 }
