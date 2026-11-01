@@ -1,10 +1,5 @@
-import Navbar from "@/components/Navbar";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 
-export default function AppLayout({ children }) {
-  return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-5xl p-4">{children}</main>
-    </>
-  );
+export default function AppLayout({children}) {
+  return <DashboardLayout>{children}</DashboardLayout>
 }
