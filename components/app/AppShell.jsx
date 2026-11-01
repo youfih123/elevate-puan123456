@@ -30,10 +30,10 @@ import { dummyUser } from "@/lib/dummy-data";
 
 const appMenu = [
   { href: "/home", label: "Beranda", icon: House },
-  { href: "/finance", label: "Kesiapan Finansial", icon: Wallet },
+  { href: "/financial-readiness", label: "Kesiapan Finansial", icon: Wallet },
   { href: "/experiments", label: "Eksperimen Saya", icon: FlaskConical },
   { href: "/history", label: "Riwayat Eksperimen", icon: HistoryIcon },
-  { href: "/insights", label: "Wawasan Pertumbuhan", icon: Lightbulb },
+  { href: "/business-overview", label: "Wawasan Pertumbuhan", icon: Lightbulb },
 ];
 
 function SidebarContent({ expanded, onToggle, onNavigate }) {
