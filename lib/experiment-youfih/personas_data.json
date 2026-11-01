@@ -1,0 +1,101 @@
+{
+  "bu_rina": {
+    "name": "Bu Rina (Kue Kering)",
+    "assessment": {
+      "business_category": "Kuliner & Makanan",
+      "business_age": "1–3 tahun",
+      "purchase_methods": ["Pre-order", "Ready stock"],
+      "main_customers": ["Teman & keluarga", "Tetangga"],
+      "repeat_frequency": "Kadang-kadang",
+      "viewer_behavior": "Bertanya dulu lalu sebagian membeli",
+      "sales_sources": ["WhatsApp", "Rekomendasi pelanggan"],
+      "sales_trends_3m": "Relatif stabil",
+      "order_surge": "Masih cukup aman",
+      "operational_obstacles": ["Waktu"],
+      "biggest_challenge": "Sulit mendapatkan pelanggan baru",
+      "acquisition_activities": ["Story WhatsApp"],
+      "story_text": "Penjualan kue kering saya masih dari WhatsApp, tetangga, dan arisan. Saya bingung mau mulai bikin konten atau iklan, tapi waktu saya terbatas karena mengurus rumah.",
+      "main_goal": "Mendapatkan lebih banyak pelanggan"
+    },
+    "constraints": {
+      "hours_per_week": "3 – 5 jam/minggu",
+      "digital_skill": "rendah",
+      "team_size": "one man show / 1"
+    },
+    "finance_input": {
+      "monthly_revenue": 3500000,
+      "monthly_operating_cost": 2800000,
+      "household_need": 450000,
+      "product_margin_pct": 35,
+      "willingness_to_lose": 150000
+    },
+    "history": []
+  },
+  "kak_dinda": {
+    "name": "Kak Dinda (Skincare)",
+    "assessment": {
+      "business_category": "Kecantikan & Personal Care",
+      "business_age": "1–3 tahun",
+      "purchase_methods": ["Ready stock"],
+      "main_customers": ["Pelanggan online"],
+      "repeat_frequency": "Sering",
+      "viewer_behavior": "Banyak yang bertanya tapi sedikit yang membeli",
+      "sales_sources": ["Instagram", "TikTok", "Marketplace"],
+      "sales_trends_3m": "Naik-turun",
+      "order_surge": "Masih bisa menangani dengan mudah",
+      "operational_obstacles": ["Membalas customer"],
+      "biggest_challenge": "Penjualan stagnan",
+      "acquisition_activities": ["Konten Instagram", "Paid ads", "Promo / diskon"],
+      "story_text": "Saya sudah rajin posting dan pernah coba iklan, tapi penjualan segitu-segitu saja. Banyak yang DM tanya harga lalu hilang.",
+      "main_goal": "Meningkatkan penjualan"
+    },
+    "constraints": {
+      "hours_per_week": "5+ jam/minggu",
+      "digital_skill": "sedang",
+      "team_size": "2 – 5 orang"
+    },
+    "finance_input": {
+      "monthly_revenue": 12000000,
+      "monthly_operating_cost": 9000000,
+      "household_need": 1500000,
+      "product_margin_pct": 40,
+      "willingness_to_lose": 300000
+    },
+    "history": [
+      {"net_profit": 384000},
+      {"net_profit": 288000}
+    ]
+  },
+  "bu_sari": {
+    "name": "Bu Sari (Kue Pesanan)",
+    "assessment": {
+      "business_category": "Kuliner & Makanan",
+      "business_age": "3-5 tahun",
+      "purchase_methods": ["Pre-order", "Pesanan custom"],
+      "main_customers": ["pelanggan lokal", "Pelanggan online"],
+      "repeat_frequency": "Hampir selalu",
+      "viewer_behavior": "Langsung membeli",
+      "sales_sources": ["WhatsApp", "Instagram"],
+      "sales_trends_3m": "Meningkat",
+      "order_surge": "Sering kewalahan",
+      "operational_obstacles": ["Waktu", "Tenaga", "Produksi"],
+      "biggest_challenge": "Operasional mulai kewalahan",
+      "acquisition_activities": ["Konten Instagram", "Promo / diskon"],
+      "story_text": "Pesanan makin banyak tapi saya sering telat kirim. Saya mau penjualan naik lagi, tapi takut makin kewalahan.",
+      "main_goal": "Meningkatkan penjualan"
+    },
+    "constraints": {
+      "hours_per_week": "5+ jam/minggu",
+      "digital_skill": "sedang",
+      "team_size": "2 – 5 orang"
+    },
+    "finance_input": {
+      "monthly_revenue": 20000000,
+      "monthly_operating_cost": 15000000,
+      "household_need": 3000000,
+      "product_margin_pct": 30,
+      "willingness_to_lose": 500000
+    },
+    "history": []
+  }
+}
