@@ -1,10 +1,5 @@
-import Navbar from "@/components/Navbar";
+import AppShell from "@/components/app/AppShell";
 
 export default function AppLayout({ children }) {
-  return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-5xl p-4">{children}</main>
-    </>
-  );
+  return <AppShell>{children}</AppShell>;
 }
