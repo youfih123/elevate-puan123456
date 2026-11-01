@@ -12,7 +12,7 @@ import OpportunityIcon from "@/components/opportunity-library/OpportunityIcon";
 // Persona: Kak Dinda - Usaha Skincare
 // =====================================================
 
-const EXPERIMENT_ROUTE = "/experiments/daily";
+const EXPERIMENT_ROUTE = "/experiments/rancangan_experimen";
 const EXPERIMENT_STORAGE_KEY =
   "elevate_selected_experiment_strategy";
 
@@ -28,19 +28,15 @@ const mainStrategy = {
     "Estimasi biaya Rp0, masih sesuai dengan anggaran aman Kak Dinda sebesar Rp300.000.",
     "Strategi memanfaatkan media sosial dan produk yang sudah dimiliki.",
   ],
-  duration: "7 hari",
+  duration: "3 hari",
   cost: "Rp0",
   target: "Rekap omzet selama 3 jam Flash Sale",
   final_score: 0.523,
-  day_by_day_plan: [
-    "Tentukan 1 item stok melimpah yang akan dijadikan produk promo.",
-    "Buat flyer promo 'Grebek Flash Sale 3 Jam Saja (16.00–19.00)'.",
-    "Posting pengumuman countdown (H-1) di Story WA dan Instagram.",
-    "Kirim reminder pesan 1 jam sebelum Flash Sale dimulai.",
-    "Eksekusi Flash Sale dan posting pembaruan sisa stok yang makin menipis.",
-    "Tutup promo tepat waktu begitu jam menunjukkan pukul 19.00.",
-    "Rekap total omzet cepat yang didapat dalam waktu 3 jam tersebut.",
-  ],
+ day_by_day_plan: [
+  '\nPilih produk "jagoan"',
+  '\nSiapkan amunisi visual',
+  '\nMulai beri "bocoran" (H-1)',
+],
 };
 
 const alternatives = [
